@@ -35,9 +35,16 @@ class RenderDog {
 
 }
 
+$arrDogs = [
+    new Dog("Pluto","orange", 12),
+    new Dog("Pricken","svart-vit", 3),
+    new Dog("Lady","beige", 5),
+    new Dog("Fox","red", 4)
+];
+
 // DEL 2: Vår app
 
-$testDog = new Dog("Pluto","orange", 12);
+//$testDog = new Dog("Pluto","orange", 12);
 $render = new RenderDog();
 
 // DEL 3: Vår output = echo HTML
@@ -58,7 +65,9 @@ $render = new RenderDog();
         //echo "<p>Name: {$testDog->name} </p>";
         //echo "<p>Color: {$testDog->color} </p>";
 
-        echo $render->renderDogInfo($testDog);
+        foreach($arrDogs as $dog) {
+            echo $render->renderDogInfo($dog);
+        }
     ?>
 
 </body>
