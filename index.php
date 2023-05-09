@@ -16,20 +16,20 @@ class Dog {
     private $color = "";
     private $age = 0;
 
-    function __construct($name, $color, $age) {
+    function __construct(string $name, string $color, int $age) {
         $this->name = $name; // i JS this.name = name
         $this->color = $color;
         $this->age = $age;
     }
 
-    function getInfo() {
+    function getInfo(): string {
         return "Name: {$this->name}, Color: {$this->color}, Age: {$this->age}";
     }
 }
 
 class RenderDog {
 
-    function renderDogInfo($dog) {
+    function renderDogInfo(Dog $dog): string {
         return "<p>{$dog->getInfo()}</p>";
     }
 
