@@ -16,14 +16,28 @@ class Dog {
     private $color = "";
     private $age = 0;
 
+    // konstruktor
     function __construct(string $name, string $color, int $age) {
         $this->name = $name; // i JS this.name = name
         $this->color = $color;
         $this->age = $age;
     }
 
+    // metod = funktion inne i objekt
     function getInfo(): string {
         return "Name: {$this->name}, Color: {$this->color}, Age: {$this->age}";
+    }
+}
+
+class DogHotell {
+    private $dogs = [];
+
+    function __construct($dogs) {
+        $this->dogs = $dogs;
+    }
+
+    function getDogs() {
+        return $this->dogs;
     }
 }
 
@@ -35,16 +49,16 @@ class RenderDog {
 
 }
 
-$arrDogs = [
+// DEL 2: Vår app
+
+//$testDog = new Dog("Pluto","orange", 12);
+$myDogs = new DogHotell([
     new Dog("Pluto","orange", 12),
     new Dog("Pricken","svart-vit", 3),
     new Dog("Lady","beige", 5),
     new Dog("Fox","red", 4)
-];
+]);
 
-// DEL 2: Vår app
-
-//$testDog = new Dog("Pluto","orange", 12);
 $render = new RenderDog();
 
 // DEL 3: Vår output = echo HTML
@@ -65,7 +79,7 @@ $render = new RenderDog();
         //echo "<p>Name: {$testDog->name} </p>";
         //echo "<p>Color: {$testDog->color} </p>";
 
-        foreach($arrDogs as $dog) {
+        foreach($myDogs->getDogs() as $dog) {
             echo $render->renderDogInfo($dog);
         }
     ?>
