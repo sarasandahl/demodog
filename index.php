@@ -12,23 +12,33 @@
 
 class Dog {
     // egenskap = en variabel inne i ett objekt
-    public $name = "";
-    public $color = "";
+    private $name = "";
+    private $color = "";
+    private $age = 0;
 
-    function __construct($name, $color) {
+    function __construct($name, $color, $age) {
         $this->name = $name; // i JS this.name = name
         $this->color = $color;
+        $this->age = $age;
+    }
+
+    function getInfo() {
+        return "Name: {$this->name}, Color: {$this->color}, Age: {$this->age}";
     }
 }
 
 class RenderDog {
 
+    function renderDogInfo($dog) {
+        return "<p>{$dog->getInfo()}</p>";
+    }
+
 }
 
 // DEL 2: Vår app
 
-$testDog = new Dog("Pluto","orange");
-//$render = new RenderDog();
+$testDog = new Dog("Pluto","orange", 12);
+$render = new RenderDog();
 
 // DEL 3: Vår output = echo HTML
 ?>
@@ -45,8 +55,10 @@ $testDog = new Dog("Pluto","orange");
     
     <h1>My Dog</h1>
     <?php
-        echo "<p>Name: {$testDog->name} </p>";
-        echo "<p>Color: {$testDog->color} </p>";
+        //echo "<p>Name: {$testDog->name} </p>";
+        //echo "<p>Color: {$testDog->color} </p>";
+
+        echo $render->renderDogInfo($testDog);
     ?>
 
 </body>
